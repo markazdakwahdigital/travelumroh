@@ -1,0 +1,1 @@
+export const financeSummary=[['Kas & Bank','Rp 6,24 M','12 rekening aktif'],['Piutang','Rp 842 jt','18 jatuh tempo minggu ini'],['Pendapatan Bulan Ini','Rp 2,48 M','Data dashboard recovery'],['Arus Pendapatan','Rp 14,82 M','Ringkasan baseline recovery']];
