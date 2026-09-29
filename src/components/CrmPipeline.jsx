@@ -1,0 +1,2 @@
+import React from 'react'; import {ChevronRight} from 'lucide-react';
+export default function CrmPipeline({items}){return <article className="panel"><div className="title"><div><h3>Pipeline CRM Jamaah</h3><p>Perjalanan calon jamaah secara realtime</p></div><button>Lihat CRM lengkap →</button></div><div className="pipeline">{items.map((x,i)=><React.Fragment key={x[0]}><div><small>{x[0]}</small><b>{x[1]}</b><span>{x[2]}</span></div>{i<items.length-1&&<ChevronRight/>}</React.Fragment>)}</div></article>}
