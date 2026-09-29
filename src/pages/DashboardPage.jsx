@@ -10,7 +10,7 @@ export default function DashboardPage(){
  return <section className="content dashboard-mdd">
   <section className="mdd-hero">
    <div className="hero-copy"><span>Selamat Datang di</span><h1><b>MARKAZ DAKWAH DIGITAL</b><br/>Travel Umrah & Haji</h1><p>Melayani perjalanan ibadah ke Baitullah dengan amanah, profesional dan penuh berkah.</p><div className="hero-values"><span><ShieldCheck/>Amanah</span><span><Users/>Profesional</span><span><Star/>Penuh Berkah</span></div></div>
-   <div className="hero-emblem"><img src="/travelumroh/mdd-logo.jpg" alt="Logo Markaz Dakwah Digital"/><small>LABBAIKALLAAHUMMA LABBAIK</small></div>
+   <div className="hero-emblem islamic-arch"><div className="arabic">لَبَّيْكَ اللَّهُمَّ لَبَّيْك</div><small>LABBAIKALLAAHUMMA LABBAIK</small></div>
   </section>
   <div className="mobile-greeting"><img src="/travelumroh/mdd-logo.jpg" alt="MDD"/><div><small>Assalamu'alaikum</small><b>Admin Pusat</b></div></div>
   <KpiGrid items={kpis}/>
