@@ -1,0 +1,3 @@
+import React from 'react'; import {TrendingUp,Users,Plane,Target} from 'lucide-react';
+const icons={trending:TrendingUp,users:Users,plane:Plane,target:Target};
+export default function KpiGrid({items}){return <div className="kpis">{items.map(item=>{const Icon=icons[item.icon];return <article key={item.title}><Icon/><small>{item.title}</small><h2>{item.value}</h2><em>↗ {item.status}</em></article>})}</div>}
