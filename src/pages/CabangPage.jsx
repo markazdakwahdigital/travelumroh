@@ -1,2 +1,33 @@
 import React from 'react';
-export default function CabangPage(){return <section className="content"><div className="date">CABANG • RECOVERY PASS 6</div><div className="hello"><div><h1>Cabang</h1><p>Kerangka pengelolaan unit/cabang dalam jaringan Travel Umrah MDD.</p></div><button className="primary">＋ Cabang</button></div><div className="module-grid">{['Daftar Cabang','Jamaah per Cabang','Booking per Cabang','Aktivitas Cabang'].map(x=><article className="panel" key={x}><h3>{x}</h3><p>Slot modul tersedia dan menunggu data terverifikasi.</p></article>)}</div><article className="panel"><h3>Jaringan Cabang</h3><div className="empty-table"><b>Identitas cabang belum direkonstruksi</b><span>Recovery hanya mengaktifkan arsitektur modul tanpa mengarang lokasi atau performa cabang.</span></div></article></section>
+
+export default function CabangPage() {
+  return (
+    <section className="content">
+      <div className="date">CABANG • RECOVERY PASS 6</div>
+      <div className="hello">
+        <div>
+          <h1>Cabang</h1>
+          <p>Kerangka pengelolaan unit/cabang dalam jaringan Travel Umrah MDD.</p>
+        </div>
+        <button className="primary" type="button">＋ Cabang</button>
+      </div>
+
+      <div className="module-grid">
+        {['Daftar Cabang', 'Jamaah per Cabang', 'Booking per Cabang', 'Aktivitas Cabang'].map((item) => (
+          <article className="panel" key={item}>
+            <h3>{item}</h3>
+            <p>Slot modul tersedia dan menunggu data terverifikasi.</p>
+          </article>
+        ))}
+      </div>
+
+      <article className="panel">
+        <h3>Jaringan Cabang</h3>
+        <div className="empty-table">
+          <b>Identitas cabang belum direkonstruksi</b>
+          <span>Recovery hanya mengaktifkan arsitektur modul tanpa mengarang lokasi atau performa cabang.</span>
+        </div>
+      </article>
+    </section>
+  );
+}
