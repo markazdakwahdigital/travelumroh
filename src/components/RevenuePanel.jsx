@@ -1,2 +1,2 @@
 import React from 'react';
-export default function RevenuePanel(){return <article className="panel revenue"><h3>Arus Pendapatan</h3><p>Realisasi pendapatan bulan ini</p><h2>Rp 14,82 M <em>↗ 21,6%</em></h2><div className="bars">{[35,50,45,63,72,86,78].map((h,i)=><i key={i} style={{height:h+'%'}}><span>{['Jan','Feb','Mar','Apr','Mei','Jun','Jul'][i]}</span></i>)}</div></article>}
+export default function RevenuePanel(){return <article className="panel revenue"><h3>Arus Pendapatan</h3><p>Realisasi pendapatan bulan ini</p><h2>Rp 348 Jt <em>↗ 8,4%</em></h2><div className="bars">{[42,55,48,64,71,83,78].map((h,i)=><i key={i} style={{height:h+'%'}}><span>{['Jan','Feb','Mar','Apr','Mei','Jun','Jul'][i]}</span></i>)}</div></article>}
