@@ -1,2 +1,2 @@
-import React from 'react'; import {Search,Menu} from 'lucide-react';
-export default function Header({onMenu}){return <header><button aria-label="Menu" onClick={onMenu}><Menu size={20}/></button><div className="search"><Search size={18}/><span>Cari jamaah, invoice, paket...</span><kbd>⌘ K</kbd></div><div className="user">AA <span><b>Abu Adzka</b><small>Owner</small></span></div></header>}
+import React from 'react'; import {Search,Menu} from 'lucide-react'; import {useUI} from '../context/UIContext';
+export default function Header({onMenu}){const {query,setQuery}=useUI();return <header><button aria-label="Menu" onClick={onMenu}><Menu size={20}/></button><label className="search"><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Cari menu, jamaah, invoice, paket..." aria-label="Pencarian global"/></label><div className="user">AA <span><b>Abu Adzka</b><small>Owner</small></span></div></header>}
