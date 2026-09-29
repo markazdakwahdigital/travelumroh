@@ -11,7 +11,7 @@ export const pipeline = [
 ];
 export const transactions = [
   ['Ahmad Fauzi','Umrah Hemat','Rp 37.500.000','Lunas'],
-  ['Nur Aisyah','Umrah Ramadhan & I'tikaf','Rp 12.000.000','DP'],
+  ['Nur Aisyah',"Umrah Ramadhan & I'tikaf",'Rp 12.000.000','DP'],
   ['Keluarga H. Ramli','Umrah Plus Turki','Rp 126.000.000','Verifikasi'],
   ['Siti Rahmah','Umrah Reguler','Rp 29.750.000','Lunas']
 ];
