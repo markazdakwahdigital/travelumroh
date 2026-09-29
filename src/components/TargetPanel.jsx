@@ -1,0 +1,2 @@
+import React from 'react';
+export default function TargetPanel(){return <article className="panel target"><h3>Target Penjualan</h3><p>Juli 2026</p><div className="ring">82%</div><b>Realisasi Rp 2,48 M</b><span>Target Rp 3,00 M</span><small>Kurang Rp 520 jt • 8 hari tersisa</small></article>}
