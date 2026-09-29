@@ -1,2 +1,2 @@
 import React from 'react'; import {Search,Menu} from 'lucide-react';
-export default function Header(){return <header><button aria-label="Menu"><Menu size={20}/></button><div className="search"><Search size={18}/><span>Cari jamaah, invoice, paket...</span><kbd>⌘ K</kbd></div><div className="user">AA <span><b>Abu Adzka</b><small>Owner</small></span></div></header>}
+export default function Header({onMenu}){return <header><button aria-label="Menu" onClick={onMenu}><Menu size={20}/></button><div className="search"><Search size={18}/><span>Cari jamaah, invoice, paket...</span><kbd>⌘ K</kbd></div><div className="user">AA <span><b>Abu Adzka</b><small>Owner</small></span></div></header>}
