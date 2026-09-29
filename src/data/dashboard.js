@@ -1,21 +1,21 @@
 export const kpis = [
-  { title:'Pendapatan Bulan Ini', value:'Rp 2,48 M', status:'+18,4%', icon:'trending' },
-  { title:'Total Jamaah Aktif', value:'1.284', status:'+126 bulan ini', icon:'users' },
-  { title:'Keberangkatan', value:'18', status:'5 dalam 14 hari', icon:'plane' },
-  { title:'Rasio Konversi', value:'32,8%', status:'+4,2% vs Juni', icon:'target' }
+  { title:'Pendapatan Bulan Ini', value:'Rp 348 Jt', status:'+8,4%', icon:'trending' },
+  { title:'Total Jamaah Aktif', value:'184', status:'+18 bulan ini', icon:'users' },
+  { title:'Keberangkatan', value:'4', status:'2 dalam 30 hari', icon:'plane' },
+  { title:'Rasio Konversi', value:'28,6%', status:'+2,1% vs bulan lalu', icon:'target' }
 ];
 export const pipeline = [
-  ['Prospek','428','Lead aktif'],['Follow Up','286','67% konversi'],
-  ['Booking','152','53% konversi'],['DP','108','71% konversi'],
-  ['Pelunasan','76','70% konversi'],['Berangkat','48','63% konversi']
+  ['Prospek','86','Lead aktif'],['Follow Up','54','63% konversi'],
+  ['Booking','31','57% konversi'],['DP','24','77% konversi'],
+  ['Pelunasan','18','75% konversi'],['Berangkat','14','78% konversi']
 ];
 export const transactions = [
-  ['Ahmad Fauzi','Umrah Maulid Premium','Rp 37.500.000','Lunas'],
-  ['Nur Aisyah','Umrah Hemat 9 Hari','Rp 12.000.000','DP'],
+  ['Ahmad Fauzi','Umrah Hemat','Rp 37.500.000','Lunas'],
+  ['Nur Aisyah','Umrah Ramadhan & I'tikaf','Rp 12.000.000','DP'],
   ['Keluarga H. Ramli','Umrah Plus Turki','Rp 126.000.000','Verifikasi'],
   ['Siti Rahmah','Umrah Reguler','Rp 29.750.000','Lunas']
 ];
 export const departures = [
-  ['26 JUL','Umrah Reguler','42/45'],['02 AGU','Umrah Maulid Premium','38/40'],
-  ['08 AGU','Umrah Hemat 9 Hari','31/45']
+  ['12 OKT','Umrah Reguler','32/40'],['26 OKT','Umrah Hemat','28/40'],
+  ['08 NOV',"Umrah Ramadhan & I'tikaf",'24/40']
 ];
