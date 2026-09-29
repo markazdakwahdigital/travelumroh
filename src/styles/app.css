@@ -130,3 +130,34 @@ body,.dashboard-mdd{background:#f6f8fc;color:var(--mdd-black)}aside{background:l
 @media(max-width:600px){
  .reference-grid{display:none}.crm-pipeline-panel .pipeline{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;overflow:visible!important;scroll-snap-type:none!important}.crm-pipeline-panel .pipeline-stage{min-width:0!important;width:100%;min-height:112px!important}.crm-pipeline-panel .pipeline-arrow{display:none}.after-pipeline-grid{display:block}.user>img,.mobile-greeting img{content:url("/travelumroh/abu-adzka-profile.jpg")}
 }
+
+/* Device UI v3: true mobile/tablet composition matching approved reference */
+.user>img{object-fit:cover!important;object-position:50% 35%!important}
+@media (min-width:601px) and (max-width:1100px){
+ aside{display:block!important;width:178px!important;transform:none!important;padding:10px 8px!important}
+ main{margin-left:178px!important;width:calc(100% - 178px)!important}
+ .brand-mdd img{width:64px!important;height:64px!important}.brand-mdd b{font-size:12px!important;letter-spacing:2px!important}.brand-mdd strong{font-size:8px!important}.brand-mdd small{font-size:7px!important}
+ nav a{font-size:9px!important;padding:7px 8px!important}nav a svg{width:14px!important}.support-card{font-size:9px!important;padding:8px!important}
+ .content{padding:8px!important}.dashboard-welcome{display:none!important}
+ .mdd-hero{min-height:205px!important;padding:20px!important}.hero-copy{max-width:58%!important}.hero-copy h1 b{font-size:24px!important}.hero-copy p{font-size:10px!important}.hero-values span{font-size:8px!important}
+ .hero-emblem.islamic-arch{width:160px!important;min-height:120px!important}
+ .mobile-greeting{display:none!important}.mobile-shortcuts{display:none!important}
+ .dashboard-mdd .kpis{grid-template-columns:repeat(4,minmax(0,1fr))!important}.dashboard-mdd .kpis article{min-width:0!important}
+ .reference-grid{grid-template-columns:minmax(0,1.55fr) minmax(220px,.8fr)!important}.reference-grid>.panel{min-height:240px!important}
+ .crm-pipeline-panel .pipeline{grid-template-columns:repeat(6,minmax(0,1fr))!important}
+ .after-pipeline-grid{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:600px){
+ header{height:52px!important;background:linear-gradient(180deg,#063a82dd,#063a8299)!important;padding:0 10px!important}.search{display:none!important}.header-actions{display:flex!important;margin-left:auto!important}.header-actions button{width:32px!important;height:32px!important;color:#fff!important;border-color:#ffffff55!important;background:#ffffff14!important}.user{display:none!important}
+ .content{padding:0 8px 72px!important}.dashboard-welcome{display:none!important}
+ .mdd-hero{margin:0 -8px!important;min-height:330px!important;padding:60px 10px 16px!important;border-radius:0 0 18px 18px!important;background-position:center center!important}
+ .hero-copy{position:absolute!important;left:10px!important;right:10px!important;bottom:14px!important;text-align:center!important;max-width:none!important}.hero-copy>span,.hero-copy p,.hero-values{display:none!important}.hero-copy h1 b{font-size:20px!important}
+ .hero-emblem.islamic-arch{top:54px!important;width:165px!important;min-height:118px!important}
+ .mobile-greeting{display:flex!important;margin:-48px 10px 8px!important;padding:7px 9px!important;border-radius:12px!important;background:#052d66d9!important;backdrop-filter:blur(6px);width:max-content;max-width:85%}.mobile-greeting img{width:42px!important;height:42px!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 35%!important}
+ .dashboard-mdd .kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin:9px 0!important}.dashboard-mdd .kpis article{min-height:82px!important;display:grid!important;grid-template-columns:34px 1fr!important;padding:8px!important;column-gap:6px!important}.dashboard-mdd .kpis article>svg{width:20px!important;height:20px!important;padding:5px!important}.dashboard-mdd .kpis article h2{font-size:16px!important}.dashboard-mdd .kpis article small{font-size:8px!important}
+ .mobile-shortcuts{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:7px!important}.mobile-shortcuts a{min-height:64px!important;background:linear-gradient(145deg,#0757c9,#06377d)!important;border:1px solid #e2ad3566!important}.mobile-shortcuts a:nth-child(2),.mobile-shortcuts a:nth-child(5){background:linear-gradient(145deg,#e2ad35,#b47a12)!important}.mobile-shortcuts a:nth-child(3),.mobile-shortcuts a:nth-child(4),.mobile-shortcuts a:nth-child(6){background:linear-gradient(145deg,#0b0f17,#0757c9)!important}
+ .reference-grid{display:none!important}
+ .lower-grid{display:block!important}.crm-pipeline-panel{margin-top:8px!important}.crm-pipeline-panel .pipeline{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;overflow:visible!important}.crm-pipeline-panel .pipeline-stage{min-width:0!important;width:100%!important;min-height:104px!important;padding:7px!important}.crm-pipeline-panel .pipeline-stage b{font-size:17px!important}.crm-pipeline-panel .pipeline-stage small,.crm-pipeline-panel .pipeline-stage span{font-size:7px!important}
+ .after-pipeline-grid{display:block!important}.after-pipeline-grid>.panel{margin:8px 0!important}.nearest .trip{grid-template-columns:44px 1fr auto!important}.trip-thumb{width:36px!important;height:36px!important}
+ .activity{display:block!important}.mobile-bottom{display:flex!important}
+}
