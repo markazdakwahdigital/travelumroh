@@ -1,2 +1,2 @@
-import React from 'react'; import {createRoot} from 'react-dom/client'; import {HashRouter} from 'react-router-dom'; import './styles/app.css'; import './styles/auth-v7.css'; import './styles/module-v9.css'; import './styles/owner-dashboard.css'; import './styles/owner-kaaba-position.css'; import App from './App';
+import React from 'react'; import {createRoot} from 'react-dom/client'; import {HashRouter} from 'react-router-dom'; import './styles/app.css'; import './styles/auth-v7.css'; import './styles/module-v9.css'; import './styles/owner-dashboard.css'; import './styles/owner-kaaba-position.css'; import './styles/owner-responsive-fixes.css'; import App from './App';
 createRoot(document.getElementById('root')).render(<HashRouter><App/></HashRouter>);
