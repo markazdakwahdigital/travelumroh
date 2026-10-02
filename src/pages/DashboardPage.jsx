@@ -1,51 +1,27 @@
 import React from 'react';
-import { Activity, AlertTriangle, BarChart3, Banknote, BellRing, Boxes, CalendarDays, CircleDollarSign, GitCompareArrows, Megaphone, Plane, RefreshCw, Target, TrendingUp, UserCheck, Users, WalletCards } from 'lucide-react';
-
+import { Activity, AlertTriangle, BarChart3, Banknote, Boxes, CalendarDays, CircleDollarSign, ClipboardList, GitCompareArrows, Megaphone, Plane, RefreshCw, Target, TrendingUp, UserCheck, Users, WalletCards } from 'lucide-react';
 const empty='Belum ada data';
-const ownerKpis=[
- ['Revenue',CircleDollarSign,empty],['Target Achievement',Target,'Belum ada target'],['Leads',Users,empty],['Booking',CalendarDays,empty],
- ['Show Up',UserCheck,empty],['Treatment',Activity,empty],['Rebooking',RefreshCw,empty],['VIP',Users,empty],['Referral',UserCheck,empty],
- ['Ad Spend',WalletCards,empty],['ROAS',TrendingUp,empty],['Top Campaign',Megaphone,empty],['Top Treatment',BarChart3,empty],['Stock Critical',Boxes,empty],['Alert Bisnis',BellRing,empty]
-];
-const sources=['Input Divisi/Staf','Input Manager','Input Cabang','Input Agen','Jamaah Berangkat','Jamaah Cancel','Jumlah Keberangkatan'];
-const alerts=['Follow Up','No Show','Stok Menipis','Konten Belum Publish','Input Terlambat','Mismatch','Journey Terputus'];
-const journey=['Lead','Prospek','Booking','Show Up','Keberangkatan','Rebooking'];
-const leadSources=['Meta Ads','Google Ads','TikTok Ads','Website','Referral','Offline','Lainnya'];
-const reconciliation=['Marketing vs CRM','Operasional vs Finance','Revenue vs Cost','Cabang vs Pusat','Agen vs Pusat'];
-const integrity=['Data kosong','Input terlambat','Mismatch','Jamaah journey terputus','Complaint','Revenue gap','Aftercare missing'];
-
-function Empty(){return <span className="owner-empty">{empty}</span>}
-function SectionTitle({icon:Icon,title,sub}){return <div className="owner-section-title"><span className="owner-icon3d"><Icon/></span><div><h3>{title}</h3>{sub&&<p>{sub}</p>}</div></div>}
-
-export default function DashboardPage(){
- const now=new Date(); const date=new Intl.DateTimeFormat('id-ID',{day:'2-digit',month:'long',year:'numeric'}).format(now);
- return <section className="content dashboard-mdd owner-dashboard">
-  <div className="owner-heading"><div><small>DASHBOARD OWNER • {date}</small><h1>Owner Control Center</h1><p>Pusat kontrol tertinggi MDD Travel Haji & Umrah untuk monitoring, rekonsiliasi, alert, dan keputusan bisnis.</p></div><span className="owner-live"><i/> Data aktual sistem</span></div>
-
-  <div className="owner-primary-kpis">
-   {[['Omzet',CircleDollarSign,empty],['Target',Target,'Belum ada target'],['Cash In',Banknote,empty],['Outstanding Payment',WalletCards,empty],['Jamaah',Users,empty],['Booking',CalendarDays,empty],['Show Up',UserCheck,empty],['Keberangkatan',Plane,empty]].map(([t,I,v])=><article className="owner-3d-card" key={t}><span className="owner-icon3d"><I/></span><small>{t}</small><strong>{v}</strong></article>)}
-  </div>
-
-  <div className="owner-grid owner-grid-2">
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={BarChart3} title="Owner Executive Overview" sub="Ringkasan performa utama bisnis"/><div className="owner-kpi-matrix">{ownerKpis.map(([t,I,v])=><div className="owner-mini3d" key={t}><I/><span><small>{t}</small><b>{v}</b></span></div>)}</div></article>
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={Activity} title="Owner Control Tower" sub="Kondisi bisnis harian dan bulan berjalan"/><div className="owner-chart-empty"><div className="owner-chart-lines"/><BarChart3/><b>Grafik menunggu data aktual</b><small>Omzet • Booking • Show Up • Keberangkatan</small></div><div className="owner-source-tags">{sources.map(x=><span key={x}>{x}</span>)}</div></article>
-  </div>
-
-  <article className="owner-panel owner-3d-card"><SectionTitle icon={BellRing} title="Integrated Owner Dashboard MDD Travel Haji & Umrah" sub="Deteksi otomatis kualitas data dan journey jamaah"/><div className="owner-integrity">{integrity.map(x=><div className="owner-mini3d" key={x}><AlertTriangle/><span><small>{x}</small><b>{empty}</b></span></div>)}</div></article>
-
-  <div className="owner-grid owner-grid-3">
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={GitCompareArrows} title="Cross-Division Reconciliation" sub="Perbandingan angka antar sumber"/><div className="owner-tabs3d">{reconciliation.map((x,i)=><button className={i===0?'active3d':''} key={x}>{x}</button>)}</div><table className="owner-table"><thead><tr><th>Indikator</th><th>Sumber A</th><th>Sumber B</th><th>Selisih</th><th>Status</th></tr></thead><tbody>{['Leads','Booking','Show Up','Keberangkatan','Revenue/Omzet'].map(x=><tr key={x}><td>{x}</td><td>{empty}</td><td>{empty}</td><td>—</td><td>—</td></tr>)}</tbody></table></article>
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={AlertTriangle} title="Lima Masalah Terbesar" sub="Berdasarkan data nyata seluruh divisi"/><div className="owner-ranked">{[1,2,3,4,5].map(n=><div key={n}><b>{n}</b><span>{empty}</span></div>)}</div></article>
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={BellRing} title="Decision Alerts" sub="Keputusan yang membutuhkan perhatian Owner"/><div className="owner-decisions">{[1,2,3,4,5].map(n=><div key={n}><AlertTriangle/><span>{empty}</span><b>—</b></div>)}</div></article>
-  </div>
-
-  <div className="owner-grid owner-grid-2">
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={TrendingUp} title="Funnel Travel" sub="Perjalanan lead sampai keberangkatan dan rebooking"/><div className="owner-funnel">{journey.map((x,i)=><div key={x} style={{width:`${100-i*10}%`}}><span>{x}</span><b>{empty}</b></div>)}</div></article>
-   <article className="owner-panel owner-3d-card"><SectionTitle icon={Megaphone} title="Leads Berdasarkan Source" sub="Sumber leads dari platform iklan dan CRM"/><div className="owner-pie-wrap"><div className="owner-pie3d"><span>Belum ada<br/>data</span></div><div className="owner-pie-legend">{leadSources.map(x=><div key={x}><i/><span>{x}</span><b>—</b></div>)}</div></div></article>
-  </div>
-
-  <article className="owner-panel owner-3d-card"><SectionTitle icon={AlertTriangle} title="Tabel Alert" sub="Alert praktis yang dibentuk dari data sistem, bukan catatan manual"/><div className="owner-table-scroll"><table className="owner-table"><thead><tr><th>Tipe Alert</th><th>Deskripsi</th><th>Divisi</th><th>Status</th><th>Waktu</th><th>Aksi</th></tr></thead><tbody>{alerts.map(x=><tr key={x}><td>{x}</td><td>{empty}</td><td>—</td><td>{empty}</td><td>—</td><td><button>Detail</button></td></tr>)}</tbody></table></div></article>
-
-  <div className="owner-data-note"><AlertTriangle/><div><b>Prinsip data Owner Dashboard</b><p>Semua angka wajib berasal dari input staf/divisi, Manager, Cabang, Agen, data jamaah dan keberangkatan. Jika sumber belum tersedia, sistem menampilkan “Belum ada data” atau “Belum ada target” — tidak membuat angka contoh.</p></div></div>
- </section>
-}
+const kpis=[['OMZET',CircleDollarSign,'blue'],['TARGET',Target,'gold'],['CASH IN',Banknote,'green'],['OUTSTANDING',ClipboardList,'red'],['JAMAAH',Users,'blue'],['KEBERANGKATAN',Plane,'purple']];
+const exec=[['Revenue',BarChart3],['Target Achievement',Target],['Leads',Users],['Booking',CalendarDays],['Show Up',Users],['Treatment',Activity],['Referral',RefreshCw],['Ad Spend',Megaphone],['ROAS',TrendingUp],['Top Campaign',TrendingUp],['Top Treatment',Target],['Stok Inventory Kritis',Boxes]];
+const journey=[['Leads',Users,'blue'],['Prospek',Users,'gold'],['Booking',ClipboardList,'gold'],['Show Up',Users,'green'],['Keberangkatan',Plane,'purple'],['Rebooking',RefreshCw,'purple']];
+const leadSources=['Google Ads','Meta Ads','TikTok Ads','Website','Referal','Offline','Lainnya'];
+const alerts=[['Follow Up','CRM'],['No Show','Operasional'],['Stok Menipis','Inventory'],['Konten Belum Publish','Marketing'],['Input Terlambat','Semua Divisi']];
+function Title({icon:Icon,title,sub}){return <div className="ref-title"><span><Icon/></span><div><h3>{title}</h3><p>{sub}</p></div></div>}
+export default function DashboardPage(){return <section className="content dashboard-mdd owner-dashboard owner-reference">
+ <header className="ref-hero"><div className="ref-ornament">✦</div><div><h1>DASHBOARD OWNER<br/><b>MDD TRAVEL HAJI & UMRAH</b></h1><p>Pusat Kontrol, Keputusan, dan Pertumbuhan Bisnis</p></div><div className="ref-kaaba"><span>◆</span></div></header>
+ <div className="ref-kpis">{kpis.map(([t,I,c])=><article className={`ref-kpi ${c}`} key={t}><span className="ref-kpi-icon"><I/></span><div><b>{t} ⓘ</b><p>{t==='TARGET'?'Belum ada target':empty}</p><i/></div><BarChart3 className="ref-mini-chart"/></article>)}</div>
+ <div className="ref-top-grid">
+  <article className="ref-panel executive"><Title icon={Target} title="OWNER EXECUTIVE OVERVIEW" sub="Ringkasan performa utama bisnis MDD Travel Haji & Umrah"/><div className="ref-exec-grid">{exec.map(([t,I])=><div className="ref-exec-item" key={t}><span><I/></span><div><b>{t}</b><small>{t==='Target Achievement'?'Belum ada target':empty}</small></div></div>)}</div></article>
+  <article className="ref-panel tower"><Title icon={Activity} title="OWNER CONTROL TOWER" sub="Kondisi bisnis harian dan bulan berjalan"/><div className="ref-chart-legend"><i/>Omzet <i/>Booking <i/>Show Up <i/>Keberangkatan</div><div className="ref-chart"><div className="ref-bars">{[38,58,42,68,32,47,72,43,59,76,61,88].map((h,i)=><span key={i} style={{height:h+'%'}}/> )}</div><svg viewBox="0 0 500 180" preserveAspectRatio="none"><polyline points="0,145 45,110 90,130 135,90 180,105 225,72 270,94 315,55 360,70 405,38 450,52 500,22"/><polyline points="0,155 45,130 90,140 135,118 180,126 225,105 270,112 315,88 360,92 405,68 450,72 500,55"/><polyline points="0,160 45,145 90,150 135,135 180,140 225,125 270,130 315,110 360,115 405,96 450,100 500,86"/></svg><div className="ref-axis">1 Okt　5 Okt　10 Okt　15 Okt　20 Okt　25 Okt　31 Okt</div></div><div className="ref-tower-mini">{[['Leads',Users],['Booking',CalendarDays],['Show Up',Users],['Cancel',AlertTriangle]].map(([t,I])=><div key={t}><I/><span><b>{t}</b><small>{empty}</small></span></div>)}</div></article>
+  <article className="ref-panel funnel"><Title icon={BarChart3} title="FUNNEL TRAVEL" sub="Perjalanan lead sampai keberangkatan"/><div className="ref-funnel-wrap"><div className="ref-funnel3d">{journey.map(([t,,c],i)=><div className={c} style={{width:(100-i*12)+'%'}} key={t}/>)}</div><div className="ref-journey">{journey.map(([t,I,c])=><div key={t} className={c}><I/><span><b>{t}</b><small>{empty}</small></span></div>)}</div></div></article>
+ </div>
+ <div className="ref-mid-grid">
+  <article className="ref-panel leads"><Title icon={Target} title="LEADS BERDASARKAN SOURCE" sub="Sumber leads dari platform iklan dan CRM"/><div className="ref-leads-body"><div className="ref-pie3d"/><div className="ref-source-list">{leadSources.map((x,i)=><div key={x}><i className={'c'+i}/><b>{x}</b><span>{empty}</span></div>)}</div></div></article>
+  <article className="ref-panel problems"><Title icon={AlertTriangle} title="LIMA MASALAH TERBESAR" sub="Berdasarkan data nyata dari seluruh divisi"/><div className="ref-problems">{[1,2,3,4,5].map((n,i)=><div key={n}><b>{n}</b><span>{empty}</span><em className={i===0?'danger':i<3?'warn':'monitor'}>{i===0?'Prioritas Tinggi':i<3?'Perlu Perhatian':'Monitoring'}</em></div>)}</div></article>
+  <article className="ref-panel decisions"><Title icon={AlertTriangle} title="KEPUTUSAN YANG MEMBUTUHKAN PERHATIAN" sub="Daftar isu penting yang memerlukan keputusan Owner"/><div className="ref-decisions">{[AlertTriangle,ClipboardList,Users,CircleDollarSign,Plane].map((I,i)=><div key={i}><I/><span>{empty}</span><b>›</b></div>)}</div></article>
+ </div>
+ <div className="ref-bottom-grid">
+  <article className="ref-panel reconciliation"><Title icon={GitCompareArrows} title="CROSS-DIVISION RECONCILIATION" sub="Perbandingan angka antar divisi untuk memastikan kesesuaian data"/><div className="ref-tabs"><b>Marketing vs CRM</b><span>Operasional vs Finance</span><span>Revenue vs Cost</span><span>Cabang vs Pusat</span><span>Agen vs Pusat</span></div><table><thead><tr><th>Indikator</th><th>Marketing</th><th>CRM</th><th>Selisih</th><th>Status</th></tr></thead><tbody>{['Leads','Booking','Show Up','Keberangkatan','Omzet'].map(x=><tr key={x}><td>{x}</td><td>{empty}</td><td>{empty}</td><td>-</td><td>-</td></tr>)}</tbody></table></article>
+  <article className="ref-panel alert-table"><Title icon={AlertTriangle} title="TABEL ALERT" sub="Daftar alert praktis berdasarkan data sistem"/><div className="ref-filter">Semua Divisi⌄</div><table><thead><tr><th>No</th><th>Tipe Alert</th><th>Deskripsi</th><th>Divisi</th><th>Status</th><th>Waktu</th><th>Aksi</th></tr></thead><tbody>{alerts.map(([a,d],i)=><tr key={a}><td>{i+1}</td><td>{a}</td><td>{empty}</td><td>{d}</td><td>{empty}</td><td>-</td><td><button>Detail</button></td></tr>)}</tbody></table></article>
+ </div>
+ </section>}
