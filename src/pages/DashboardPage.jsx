@@ -1,13 +1,51 @@
 import React from 'react';
-import { ShieldCheck, Users, Star, Plane, WalletCards, CalendarDays, ArrowUpRight, Package, ReceiptText, ContactRound, CheckCircle2, FileUp, UserPlus, CreditCard } from 'lucide-react';
-import KpiGrid from '../components/KpiGrid'; import CrmPipeline from '../components/CrmPipeline'; import RevenuePanel from '../components/RevenuePanel'; import {kpis,pipeline,transactions,departures} from '../data/dashboard';
-const status=[['Prospek','86'],['Booking','31'],['DP','24'],['Pelunasan','18'],['Siap Berangkat','14'],['Berangkat','11']];
-export default function DashboardPage(){const now=new Date();const masehi=new Intl.DateTimeFormat('id-ID',{weekday:'long',day:'2-digit',month:'long',year:'numeric'}).format(now);let hijri='';try{hijri=new Intl.DateTimeFormat('id-ID-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(now)}catch{hijri='Kalender Hijriah'}return <section className="content dashboard-mdd">
-<div className="dashboard-welcome"><div><div className="dashboard-date"><CalendarDays/> <span>{masehi} • {hijri}</span></div><h2>Assalamu'alaikum, Abu Adzka</h2><p>Berikut ringkasan performa Travel Umrah MDD hari ini.</p></div></div><section className="mdd-hero"><div className="hero-copy"><span>Selamat Datang di</span><h1><b>MARKAZ DAKWAH DIGITAL</b></h1><p>Melayani perjalanan ibadah ke Baitullah dengan amanah, profesional dan penuh berkah.</p><div className="hero-values"><span><ShieldCheck/>Amanah</span><span><Users/>Profesional</span><span><Star/>Penuh Berkah</span></div></div></section>
-<div className="mobile-greeting"><img src="/travelumroh/abu-adzka-profile.jpg" alt="Abu Adzka"/><div><small>Assalamu'alaikum</small><b>Abu Adzka</b></div></div>
-<KpiGrid items={kpis}/>
-<div className="mobile-shortcuts"><a href="#/jamaah"><Users/><span>Jamaah</span></a><a href="#/paket"><Package/><span>Paket</span></a><a href="#/booking"><ReceiptText/><span>Booking</span></a><a href="#/keberangkatan"><Plane/><span>Keberangkatan</span></a><a href="#/pembayaran"><WalletCards/><span>Pembayaran</span></a><a href="#/crm"><ContactRound/><span>CRM & Leads</span></a></div>
-<div className="reference-grid"><RevenuePanel/><article className="panel jamaah-status"><div className="title"><h3>Status Jamaah</h3></div><div className="status-wrap"><div className="donut"><strong>184</strong><small>Jamaah</small></div><div className="status-legend">{status.map((x,i)=><div key={x[0]}><i className={'dot d'+i}/><span>{x[0]}</span><b>{x[1]}</b></div>)}</div></div></article></div>
-<div className="lower-grid"><CrmPipeline items={pipeline}/></div><div className="after-pipeline-grid"><article className="panel nearest"><div className="title"><h3>Keberangkatan Terdekat</h3><a href="#/keberangkatan">Lihat Semua <ArrowUpRight size={14}/></a></div>{departures.map((r,i)=><div className="trip" key={r[0]}><div className="trip-thumb"><Plane/></div><span><b>{r[1]}</b><small><CalendarDays/> {r[0]} · {r[2]} Jamaah</small></span><em>{i===1?'Full':'H-'+(95+i*50)}</em></div>)}</article><article className="panel activity"><div className="title"><h3>Aktivitas Terbaru</h3><a href="#/laporan">Lihat Semua <ArrowUpRight size={14}/></a></div><div><CheckCircle2/><span><b>Pembayaran diverifikasi</b><small>5 menit lalu</small></span></div><div><UserPlus/><span><b>Jamaah baru terdaftar</b><small>12 menit lalu</small></span></div><div><FileUp/><span><b>Dokumen paspor diupload</b><small>28 menit lalu</small></span></div><div><CreditCard/><span><b>Booking baru</b><small>35 menit lalu</small></span></div></article></div>
-<div className="grid dashboard-lists"><article className="panel"><div className="title"><h3>Transaksi Terbaru</h3><a href="#/pembayaran">Lihat Semua <ArrowUpRight size={14}/></a></div><table><tbody>{transactions.map((r,i)=><tr key={i}>{r.map((c,j)=><td key={j}>{c}</td>)}</tr>)}</tbody></table></article></div>
-</section>}
+import { Activity, AlertTriangle, BarChart3, Banknote, BellRing, Boxes, CalendarDays, CircleDollarSign, GitCompareArrows, Megaphone, Plane, RefreshCw, Target, TrendingUp, UserCheck, Users, WalletCards } from 'lucide-react';
+
+const empty='Belum ada data';
+const ownerKpis=[
+ ['Revenue',CircleDollarSign,empty],['Target Achievement',Target,'Belum ada target'],['Leads',Users,empty],['Booking',CalendarDays,empty],
+ ['Show Up',UserCheck,empty],['Treatment',Activity,empty],['Rebooking',RefreshCw,empty],['VIP',Users,empty],['Referral',UserCheck,empty],
+ ['Ad Spend',WalletCards,empty],['ROAS',TrendingUp,empty],['Top Campaign',Megaphone,empty],['Top Treatment',BarChart3,empty],['Stock Critical',Boxes,empty],['Alert Bisnis',BellRing,empty]
+];
+const sources=['Input Divisi/Staf','Input Manager','Input Cabang','Input Agen','Jamaah Berangkat','Jamaah Cancel','Jumlah Keberangkatan'];
+const alerts=['Follow Up','No Show','Stok Menipis','Konten Belum Publish','Input Terlambat','Mismatch','Journey Terputus'];
+const journey=['Lead','Prospek','Booking','Show Up','Keberangkatan','Rebooking'];
+const leadSources=['Meta Ads','Google Ads','TikTok Ads','Website','Referral','Offline','Lainnya'];
+const reconciliation=['Marketing vs CRM','Operasional vs Finance','Revenue vs Cost','Cabang vs Pusat','Agen vs Pusat'];
+const integrity=['Data kosong','Input terlambat','Mismatch','Jamaah journey terputus','Complaint','Revenue gap','Aftercare missing'];
+
+function Empty(){return <span className="owner-empty">{empty}</span>}
+function SectionTitle({icon:Icon,title,sub}){return <div className="owner-section-title"><span className="owner-icon3d"><Icon/></span><div><h3>{title}</h3>{sub&&<p>{sub}</p>}</div></div>}
+
+export default function DashboardPage(){
+ const now=new Date(); const date=new Intl.DateTimeFormat('id-ID',{day:'2-digit',month:'long',year:'numeric'}).format(now);
+ return <section className="content dashboard-mdd owner-dashboard">
+  <div className="owner-heading"><div><small>DASHBOARD OWNER • {date}</small><h1>Owner Control Center</h1><p>Pusat kontrol tertinggi MDD Travel Haji & Umrah untuk monitoring, rekonsiliasi, alert, dan keputusan bisnis.</p></div><span className="owner-live"><i/> Data aktual sistem</span></div>
+
+  <div className="owner-primary-kpis">
+   {[['Omzet',CircleDollarSign,empty],['Target',Target,'Belum ada target'],['Cash In',Banknote,empty],['Outstanding Payment',WalletCards,empty],['Jamaah',Users,empty],['Booking',CalendarDays,empty],['Show Up',UserCheck,empty],['Keberangkatan',Plane,empty]].map(([t,I,v])=><article className="owner-3d-card" key={t}><span className="owner-icon3d"><I/></span><small>{t}</small><strong>{v}</strong></article>)}
+  </div>
+
+  <div className="owner-grid owner-grid-2">
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={BarChart3} title="Owner Executive Overview" sub="Ringkasan performa utama bisnis"/><div className="owner-kpi-matrix">{ownerKpis.map(([t,I,v])=><div className="owner-mini3d" key={t}><I/><span><small>{t}</small><b>{v}</b></span></div>)}</div></article>
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={Activity} title="Owner Control Tower" sub="Kondisi bisnis harian dan bulan berjalan"/><div className="owner-chart-empty"><div className="owner-chart-lines"/><BarChart3/><b>Grafik menunggu data aktual</b><small>Omzet • Booking • Show Up • Keberangkatan</small></div><div className="owner-source-tags">{sources.map(x=><span key={x}>{x}</span>)}</div></article>
+  </div>
+
+  <article className="owner-panel owner-3d-card"><SectionTitle icon={BellRing} title="Integrated Owner Dashboard MDD Travel Haji & Umrah" sub="Deteksi otomatis kualitas data dan journey jamaah"/><div className="owner-integrity">{integrity.map(x=><div className="owner-mini3d" key={x}><AlertTriangle/><span><small>{x}</small><b>{empty}</b></span></div>)}</div></article>
+
+  <div className="owner-grid owner-grid-3">
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={GitCompareArrows} title="Cross-Division Reconciliation" sub="Perbandingan angka antar sumber"/><div className="owner-tabs3d">{reconciliation.map((x,i)=><button className={i===0?'active3d':''} key={x}>{x}</button>)}</div><table className="owner-table"><thead><tr><th>Indikator</th><th>Sumber A</th><th>Sumber B</th><th>Selisih</th><th>Status</th></tr></thead><tbody>{['Leads','Booking','Show Up','Keberangkatan','Revenue/Omzet'].map(x=><tr key={x}><td>{x}</td><td>{empty}</td><td>{empty}</td><td>—</td><td>—</td></tr>)}</tbody></table></article>
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={AlertTriangle} title="Lima Masalah Terbesar" sub="Berdasarkan data nyata seluruh divisi"/><div className="owner-ranked">{[1,2,3,4,5].map(n=><div key={n}><b>{n}</b><span>{empty}</span></div>)}</div></article>
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={BellRing} title="Decision Alerts" sub="Keputusan yang membutuhkan perhatian Owner"/><div className="owner-decisions">{[1,2,3,4,5].map(n=><div key={n}><AlertTriangle/><span>{empty}</span><b>—</b></div>)}</div></article>
+  </div>
+
+  <div className="owner-grid owner-grid-2">
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={TrendingUp} title="Funnel Travel" sub="Perjalanan lead sampai keberangkatan dan rebooking"/><div className="owner-funnel">{journey.map((x,i)=><div key={x} style={{width:`${100-i*10}%`}}><span>{x}</span><b>{empty}</b></div>)}</div></article>
+   <article className="owner-panel owner-3d-card"><SectionTitle icon={Megaphone} title="Leads Berdasarkan Source" sub="Sumber leads dari platform iklan dan CRM"/><div className="owner-pie-wrap"><div className="owner-pie3d"><span>Belum ada<br/>data</span></div><div className="owner-pie-legend">{leadSources.map(x=><div key={x}><i/><span>{x}</span><b>—</b></div>)}</div></div></article>
+  </div>
+
+  <article className="owner-panel owner-3d-card"><SectionTitle icon={AlertTriangle} title="Tabel Alert" sub="Alert praktis yang dibentuk dari data sistem, bukan catatan manual"/><div className="owner-table-scroll"><table className="owner-table"><thead><tr><th>Tipe Alert</th><th>Deskripsi</th><th>Divisi</th><th>Status</th><th>Waktu</th><th>Aksi</th></tr></thead><tbody>{alerts.map(x=><tr key={x}><td>{x}</td><td>{empty}</td><td>—</td><td>{empty}</td><td>—</td><td><button>Detail</button></td></tr>)}</tbody></table></div></article>
+
+  <div className="owner-data-note"><AlertTriangle/><div><b>Prinsip data Owner Dashboard</b><p>Semua angka wajib berasal dari input staf/divisi, Manager, Cabang, Agen, data jamaah dan keberangkatan. Jika sumber belum tersedia, sistem menampilkan “Belum ada data” atau “Belum ada target” — tidak membuat angka contoh.</p></div></div>
+ </section>
+}
