@@ -1,0 +1,23 @@
+/* Dashboard Owner — make the Ka'bah photo flush with the right edge of the hero. */
+.owner-reference .ref-hero .ref-kaaba-scene{
+  margin-left:auto !important;
+  margin-right:-35px !important;
+  width:345px !important;
+  min-width:345px !important;
+  height:105px !important;
+  align-self:stretch;
+  border-radius:0 0 17px 0 !important;
+}
+.owner-reference .ref-hero .ref-kaaba-scene img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:58% 51% !important;
+}
+@media (max-width:900px){
+  .owner-reference .ref-hero .ref-kaaba-scene{
+    margin-right:-20px !important;
+    width:300px !important;
+    min-width:300px !important;
+  }
+}
