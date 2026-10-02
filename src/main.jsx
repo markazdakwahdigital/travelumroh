@@ -1,2 +1,2 @@
-import React from 'react'; import {createRoot} from 'react-dom/client'; import {HashRouter} from 'react-router-dom'; import './styles/app.css'; import './styles/auth-v7.css'; import App from './App';
+import React from 'react'; import {createRoot} from 'react-dom/client'; import {HashRouter} from 'react-router-dom'; import './styles/app.css'; import './styles/auth-v7.css'; import './styles/module-v9.css'; import App from './App';
 createRoot(document.getElementById('root')).render(<HashRouter><App/></HashRouter>);
