@@ -13,7 +13,7 @@ export default function DemoApp(){
  const switchRole=r=>{setRole(r);navigate('/',{replace:true});setOpen(false)};
  return <UIProvider><div className="demo-shell">
  <div className="demo-banner"><span>MODE DEMO — HANYA LIHAT · Data ilustrasi bukan data bisnis nyata</span><a href="https://wa.me/6285196965326?text=Assalamualaikum%2C%20saya%20tertarik%20dengan%20aplikasi%20MDD%20Travel" target="_blank" rel="noopener noreferrer">Hubungi Marketing</a></div>
- <div className="app"><Sidebar role={role} isOwner={true} onRoleChange={switchRole} open={open} onNavigate={()=>setOpen(false)} onLogout={()=>navigate('/')}/>
+ <button type="button" className="demo-menu-trigger" onClick={()=>setOpen(true)} aria-label="Buka semua menu demo"><MenuIcon size={20}/> <span>SEMUA MENU</span></button><div className="app"><Sidebar role={role} isOwner={true} onRoleChange={switchRole} open={open} onNavigate={()=>setOpen(false)} onLogout={()=>navigate('/')}/>
  {open&&<button className="scrim" onClick={()=>setOpen(false)} aria-label="Tutup menu"/>}
  <main><Header onMenu={()=>setOpen(v=>!v)}/><Routes><Route path="/" element={<DashboardPage/>}/>{pages.map(([path,title])=><Route key={path} path={path} element={<ModulePage title={title} description={'Pratinjau modul '+title+' (hanya lihat).'} demo={true}/>}/>)}</Routes>
  <nav className="mobile-bottom"><NavLink to="/"><Home/><span>Beranda</span></NavLink><NavLink to="/jamaah"><Users/><span>Jamaah</span></NavLink><NavLink to="/paket"><Package/><span>Paket</span></NavLink><NavLink to="/booking"><ReceiptText/><span>Booking</span></NavLink><button onClick={()=>setOpen(true)}><MenuIcon/><span>Menu</span></button></nav></main></div></div></UIProvider>
